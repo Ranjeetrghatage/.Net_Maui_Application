@@ -12,6 +12,11 @@
         {
         }
 
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
         //private void OnCounterClicked(object sender, EventArgs e)
         //{
         //    count++;
