@@ -12,9 +12,27 @@
         {
         }
 
-        private void ImageButton_Clicked(object sender, EventArgs e)
+        private void SwitchOff_Clicked(object sender, EventArgs e)
+        {
+            ExitBorder.IsVisible = true;
+        }
+
+
+        private void SwitchOffOK_Clicked(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void SwitchOffCancel_Clicked(object sender, EventArgs e)
+        {
+            ExitBorder.IsVisible = false;
+
+        }
+
+
+        private void Settings_Clicked(object sender, EventArgs e)
+        {
+
         }
 
         //private void OnCounterClicked(object sender, EventArgs e)

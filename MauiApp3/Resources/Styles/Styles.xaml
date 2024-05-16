@@ -426,13 +426,10 @@
 
 
     <Style TargetType ="Frame" x:Key="ImageFrame">
-        <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="Margin" Value="0"></Setter>
         <Setter Property="Padding" Value="0"></Setter>
         <Setter Property="HasShadow" Value="False"></Setter>
-        <Setter Property="BorderColor" Value="Transparent"></Setter>
-        <Setter Property="BorderColor" Value="Transparent"></Setter>
-        
     </Style>
+
 
 </ResourceDictionary>
