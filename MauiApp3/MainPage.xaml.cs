@@ -11,35 +11,13 @@ namespace MauiApp3
             InitializeComponent();
         }
 
-        private void OnButtonTapped(object sender, TappedEventArgs e)
+        private void OnAddButtonTapped(object sender, TappedEventArgs e)
         {
-        }
 
-        private void SwitchOff_Clicked(object sender, EventArgs e)
-        {
-            ExitBorder.IsVisible = true;
-        }
-
-
-        private void SwitchOffOK_Clicked(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
-        private void SwitchOffCancel_Clicked(object sender, EventArgs e)
-        {
-            ExitBorder.IsVisible = false;
-
-        }
-
-        private void Settings_Clicked(object sender, EventArgs e)
-        {
             var frame = new Frame
             {
                 BorderColor = Colors.Transparent,
                 BackgroundColor = Colors.Transparent,
-                //Style = (Style)Application.Current.Resources["ImageFrame"],
-                
             };
 
             var grid = new Grid
@@ -61,12 +39,19 @@ namespace MauiApp3
             {
                 string lastFrameLabelText = lastFrameGrid.Children.OfType<Label>().FirstOrDefault().Text;
                 int firstSpaceIndex = lastFrameLabelText.IndexOf(" ");
-                CurrNumber = int.Parse(lastFrameLabelText.Substring(firstSpaceIndex + 1));
+                CurrNumber = int.Parse(lastFrameLabelText.Substring(firstSpaceIndex + 1)) + 1;
+            }
+            int ColumnNumber = 1;
+
+            if (CurrNumber % 2 != 0)
+            {
+                GalleryGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                ColumnNumber = 0;
             }
 
             var label = new Label
             {
-                Text = $"Stream {CurrNumber+1}",
+                Text = $"Stream {CurrNumber}",
                 TextColor = Colors.White,
                 VerticalOptions = LayoutOptions.End,
                 HorizontalOptions = LayoutOptions.Start,
@@ -77,18 +62,32 @@ namespace MauiApp3
             grid.Children.Add(label);
             frame.Content = grid;
 
-            GalleryGrid.SetRow(frame, 2);
-            GalleryGrid.SetColumn(frame, 0);
+            GalleryGrid.SetRow(frame, (int)Math.Ceiling((CurrNumber / 2.0) - 1));
+            GalleryGrid.SetColumn(frame, ColumnNumber);
 
             GalleryGrid.Children.Add(frame);
 
+        }
+
+        private void SwitchOff_Clicked(object sender, EventArgs e)
+        {
+            ExitBorder.IsVisible = true;
+        }
 
 
-          
+        private void SwitchOffOK_Clicked(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
 
+        private void SwitchOffCancel_Clicked(object sender, EventArgs e)
+        {
+            ExitBorder.IsVisible = false;
 
+        }
 
-
+        private void Settings_Clicked(object sender, EventArgs e)
+        {
 
         }
 

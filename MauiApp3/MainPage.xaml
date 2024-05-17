@@ -27,7 +27,7 @@
                     <Label Grid.Column="1" Text="Add Stream" TextColor="White" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
                 </Grid>
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnButtonTapped" />
+                    <TapGestureRecognizer Tapped="OnAddButtonTapped" />
                 </Frame.GestureRecognizers>
             </Frame>
 
@@ -86,7 +86,6 @@
         <ScrollView x:Name="ScrollViewer" Grid.Row="1" Grid.RowSpan="1" Grid.ColumnSpan="2" Margin="5,-16,5,0" ZIndex="0" >
             <Grid x:Name="GalleryGrid" Padding="-15,0,0,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
 
