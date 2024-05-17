@@ -425,11 +425,59 @@
 
 
 
-    <Style TargetType ="Frame" x:Key="ImageFrame">
-        <Setter Property="Margin" Value="0"></Setter>
-        <Setter Property="Padding" Value="0"></Setter>
-        <Setter Property="HasShadow" Value="False"></Setter>
+    <Style TargetType="Grid" x:Key="FrameGrid">
+        <Setter Property="Padding" Value="-10,-10,-10,0"></Setter>
+        <Setter Property="Margin" Value="0,0,-15,0"></Setter>
     </Style>
 
 
+    <Style TargetType="Label" x:Key="FrameLabel">
+        <Setter Property="TextColor" Value="White"></Setter>
+        <Setter Property="VerticalOptions" Value="End"></Setter>
+        <Setter Property="HorizontalOptions" Value="Start"></Setter>
+        <Setter Property="Margin" Value="20,90,10,20"></Setter>
+    </Style>
+
+    <Style TargetType="Frame" x:Key="Toaster">
+
+        <Setter Property="ZIndex" Value="2"></Setter>
+        <Setter Property="IsVisible" Value="False"></Setter>
+        <Setter Property="BorderColor" Value="Black"></Setter>
+        <Setter Property="BackgroundColor" Value="LightGreen"></Setter>
+        <Setter Property="CornerRadius" Value="10"></Setter>
+        <Setter Property="Padding" Value="10"></Setter>
+        <Setter Property="HasShadow" Value="True"></Setter>
+        <Setter Property="HorizontalOptions" Value="Center"></Setter>
+        <Setter Property="VerticalOptions" Value="EndAndExpand"></Setter>
+        <Setter Property="WidthRequest" Value="80"></Setter>
+        <Setter Property="HeightRequest" Value="33"></Setter>
+        <Setter Property="Margin" Value="0,0,0,30"></Setter>
+    </Style>
+
+    <Style TargetType="Label" x:Key="ToasterLabel">
+        <Setter Property="FontSize" Value="Micro"></Setter>
+        <Setter Property="Padding" Value="0,0,0,0"></Setter>
+        <Setter Property="FontAttributes" Value="Bold"></Setter>
+        <Setter Property="TextColor" Value="White"></Setter>
+    </Style>
+
+    <Style TargetType="Frame" x:Key="AddFrame">
+        <Setter Property="HorizontalOptions" Value="StartAndExpand"></Setter>
+        <Setter Property="CornerRadius" Value="100"></Setter>
+        <Setter Property="Margin" Value="16,10,0,0"></Setter>
+        <Setter Property="BackgroundColor" Value="#310165"></Setter>
+
+        <Setter Property="HasShadow" Value="False"></Setter>
+        <Setter Property="MaximumHeightRequest" Value="60"></Setter>
+        <Setter Property="MinimumWidthRequest" Value="150"></Setter>
+        <Setter Property="Padding" Value="0"></Setter>
+    </Style>
+
+
+    <Style TargetType="ImageButton" x:Key="ImageButtons">
+        <Setter Property="HorizontalOptions" Value="End"></Setter>
+        <Setter Property="MinimumWidthRequest" Value="28"></Setter>
+        <Setter Property="MinimumHeightRequest" Value="10"></Setter>
+        <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+    </Style>
 </ResourceDictionary>

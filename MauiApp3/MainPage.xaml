@@ -9,15 +9,12 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <Frame x:Name="ToasterFrame" Style="{StaticResource Toaster}"   Grid.Row="1">
+            <Label x:Name="ToasterLabel" Style="{StaticResource ToasterLabel}"/>
+        </Frame>
+
         <Grid ZIndex="1">
-            <Frame HorizontalOptions="StartAndExpand"
-               CornerRadius="100"
-               Margin="16,10,0,0"
-               BackgroundColor="#310165"
-               HasShadow="False"
-               MaximumHeightRequest="60" 
-               MinimumWidthRequest="150"                    
-               Padding="0">
+            <Frame Style="{StaticResource AddFrame}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.3*"/>
@@ -32,30 +29,24 @@
             </Frame>
 
 
-            <ImageButton Source="Resources/Images/settings.svg"
-             HorizontalOptions="End" 
-             MinimumWidthRequest="28" 
-             MinimumHeightRequest="10"
-             BackgroundColor="Transparent"
+            <ImageButton Style="{StaticResource ImageButtons}" Source="Resources/Images/settings.svg"
              Margin="0,0,70,0"
              Clicked="Settings_Clicked" />
 
-
-
-            <ImageButton Source="Resources/Images/switch_off.svg"
-              HorizontalOptions="End" 
-              MinimumWidthRequest="28" 
-              MinimumHeightRequest="10"
-              BackgroundColor="Transparent"
+            <ImageButton Style="{StaticResource ImageButtons}" Source="Resources/Images/switch_off.svg"
               Margin="0,0,20,0"
               Clicked="SwitchOff_Clicked" />
 
         </Grid>
 
-
-        <Border x:Name="ExitBorder" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" IsVisible="False"
-          WidthRequest="300" HeightRequest="80" ZIndex="2"
-          StrokeThickness="1">  
+     
+        
+        <Border x:Name="ExitBorder" Grid.Row="0"
+                Grid.RowSpan="2" Grid.ColumnSpan="2"
+                IsVisible="False"
+                WidthRequest="300"
+                HeightRequest="80" ZIndex="2"
+                StrokeThickness="1">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="30"/>
             </Border.StrokeShape>
@@ -70,11 +61,12 @@
                  TextColor="White" 
                  FontSize="Small" 
                  Grid.Row="0" />
-                <StackLayout Orientation="Horizontal"  HeightRequest="30"
-                   HorizontalOptions="Center" 
-                   VerticalOptions="End"
-                   Grid.Row="1" 
-                   Spacing="20">
+                <StackLayout   Orientation="Horizontal" 
+                               HeightRequest="30"
+                               HorizontalOptions="Center" 
+                               VerticalOptions="End"
+                               Grid.Row="1" 
+                               Spacing="20">
                     <Button Clicked="SwitchOffOK_Clicked" Text="Yes" FontSize="12" Padding="0,0,0,0" />
                     <Button Clicked="SwitchOffCancel_Clicked" Text="No" Padding="0,0,0,0" />
                 </StackLayout>
@@ -97,61 +89,40 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- First Frame -->
-                <Frame  Style="{Binding ImageFrame}" BorderColor="Transparent" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0"  >
-                    <Grid Padding="-10,-10,-10,0" Margin="0,0,-15,0">
+                <Frame BorderColor="Transparent" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0"  >
+                    <Grid Style="{StaticResource FrameGrid}">
                         <Image Source="Resources/Images/demo_img_1.png" 
                                Aspect="Fill" />
-                        <Label Text="Stream 1"
-                           TextColor="White"
-                           VerticalOptions="End" 
-                           HorizontalOptions="Start" 
-                           Margin="20,90,10,20"/>
+                        <Label Text="Stream 1" Style="{StaticResource FrameLabel}" />
                     </Grid>
                 </Frame>
 
                 <!-- Second Frame -->
-                <Frame Style="{Binding ImageFrame}" BorderColor="Transparent" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1">
-                    <Grid Padding="-10,-10,-10,0" Margin="0,0,-15,0">
+                <Frame BorderColor="Transparent" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1">
+                    <Grid Style="{StaticResource FrameGrid}">
                         <Image Source="Resources/Images/demo_img_2.png"
                            Aspect="Fill" />
-                        <Label Text="Stream 2"
-                           TextColor="White"
-                           VerticalOptions="End"
-                           HorizontalOptions="Start"
-                           Margin="20,90,10,20"/>
+                        <Label Text="Stream 2" Style="{StaticResource FrameLabel}" />
                     </Grid>
                 </Frame>
 
                 <!-- Third Frame -->
-                <Frame  Style="{Binding ImageFrame}" BorderColor="Transparent" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0">
-                    <Grid Padding="-10,-10,-10,0" Margin="0,-22,-15,0">
+                <Frame BorderColor="Transparent" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0">
+                    <Grid Style="{StaticResource FrameGrid}">
                         <Image Source="Resources/Images/demo_img_3.png"
-                               Aspect="Fill"
-                               HorizontalOptions="FillAndExpand" />
-                        <Label Text="Stream 3"
-                               TextColor="White"
-                               VerticalOptions="End"
-                               HorizontalOptions="Start"
-                           Margin="20,90,10,20"/>
+                               Aspect="Fill"   />
+                        <Label Text="Stream 3" Style="{StaticResource FrameLabel}" />
                     </Grid>
                 </Frame>
 
                 <!-- Fourth Frame -->
-                <Frame  Style="{Binding Imageframe}" BorderColor="Transparent" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1">
-                    <Grid Padding="-10,-10,-10,0" Margin="0,-22,-15,0">
+                <Frame BorderColor="Transparent" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1">
+                    <Grid Style="{StaticResource FrameGrid}">
                         <Image Source="Resources/Images/demo_img_4.png"
                                Aspect="Fill" />
-                        <Label Text="Stream 4"
-                               TextColor="White"
-                               VerticalOptions="End"
-                               HorizontalOptions="Start" 
-                           Margin="20,90,10,20"/>
+                        <Label Text="Stream 4" Style="{StaticResource FrameLabel}" />
                     </Grid>
                 </Frame>
-                
-          
-
-
             </Grid>
         </ScrollView>
 

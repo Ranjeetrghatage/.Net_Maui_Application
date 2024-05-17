@@ -13,7 +13,7 @@ namespace MauiApp3
 
 
 
-        private void OnAddButtonTapped(object sender, TappedEventArgs e)
+        private async void OnAddButtonTapped(object sender, TappedEventArgs e)
         {
             var lastFrame = GalleryGrid.Children[GalleryGrid.Children.Count - 1] as Frame;
             int CurrNumber = 0;
@@ -21,11 +21,11 @@ namespace MauiApp3
             {
                 string lastFrameLabelText = lastFrameGrid.Children.OfType<Label>().FirstOrDefault().Text;
                 int firstSpaceIndex = lastFrameLabelText.IndexOf(" ");
-                CurrNumber = int.Parse(lastFrameLabelText.Substring(firstSpaceIndex + 1)) + 1;
+                CurrNumber = int.Parse(lastFrameLabelText.Substring(firstSpaceIndex + 1)) + 1; //Current Frame Number
             }
 
             int ColumnNumber = 1;
-            if (CurrNumber % 2 != 0)
+            if (CurrNumber % 2 != 0)       
             {
                 GalleryGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                 ColumnNumber = 0;
@@ -72,24 +72,37 @@ namespace MauiApp3
 
             GalleryGrid.Children.Add(frame);
 
+            //Toaster
+            ToasterLabel.Text = "Sucess...";
+            ToasterFrame.IsVisible = true;
+            await Task.Delay(2000);
+            ToasterFrame.IsVisible = false;
+
         }
 
 
         private async void Settings_Clicked(object sender, EventArgs e)
         {
             ClearGridExceptFirstFour();
+
             var button = (ImageButton)sender;
             await button.RotateTo(360, 1000);
             button.Rotation = 0;
+
+            ToasterFrame.WidthRequest = 150;
+            ToasterLabel.Text = "Added Streams Cleared...";
+            ToasterFrame.IsVisible = true;
+            await Task.Delay(2000);
+            ToasterFrame.IsVisible = false;
+            ToasterFrame.WidthRequest = 80;
+
         }
 
 
         public void ClearGridExceptFirstFour()
         {
-            // Ensure the GalleryGrid has more than four children to avoid errors
             if (GalleryGrid.Children.Count > 4)
             {
-                // Remove children starting from the end to avoid altering the collection indices
                 for (int i = GalleryGrid.Children.Count - 1; i >= 4; i--)
                 {
                     GalleryGrid.Children.RemoveAt(i);
