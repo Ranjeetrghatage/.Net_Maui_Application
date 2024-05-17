@@ -11,8 +11,28 @@ namespace MauiApp3
             InitializeComponent();
         }
 
+
+
         private void OnAddButtonTapped(object sender, TappedEventArgs e)
         {
+            var lastFrame = GalleryGrid.Children[GalleryGrid.Children.Count - 1] as Frame;
+            int CurrNumber = 0;
+            if (lastFrame != null && lastFrame.Content is Grid lastFrameGrid)
+            {
+                string lastFrameLabelText = lastFrameGrid.Children.OfType<Label>().FirstOrDefault().Text;
+                int firstSpaceIndex = lastFrameLabelText.IndexOf(" ");
+                CurrNumber = int.Parse(lastFrameLabelText.Substring(firstSpaceIndex + 1)) + 1;
+            }
+
+            int ColumnNumber = 1;
+            if (CurrNumber % 2 != 0)
+            {
+                GalleryGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                ColumnNumber = 0;
+            }
+
+
+
 
             var frame = new Frame
             {
@@ -33,22 +53,7 @@ namespace MauiApp3
                 Background = Colors.Black
             };
 
-            var lastFrame = GalleryGrid.Children[GalleryGrid.Children.Count - 1] as Frame;
-            int CurrNumber = 0;
-            if (lastFrame != null && lastFrame.Content is Grid lastFrameGrid)
-            {
-                string lastFrameLabelText = lastFrameGrid.Children.OfType<Label>().FirstOrDefault().Text;
-                int firstSpaceIndex = lastFrameLabelText.IndexOf(" ");
-                CurrNumber = int.Parse(lastFrameLabelText.Substring(firstSpaceIndex + 1)) + 1;
-            }
-            int ColumnNumber = 1;
-
-            if (CurrNumber % 2 != 0)
-            {
-                GalleryGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                ColumnNumber = 0;
-            }
-
+      
             var label = new Label
             {
                 Text = $"Stream {CurrNumber}",
@@ -69,6 +74,27 @@ namespace MauiApp3
 
         }
 
+
+        private void Settings_Clicked(object sender, EventArgs e)
+        {
+            ClearGridExceptFirstFour();
+
+        }
+
+        public void ClearGridExceptFirstFour()
+        {
+            // Ensure the GalleryGrid has more than four children to avoid errors
+            if (GalleryGrid.Children.Count > 4)
+            {
+                // Remove children starting from the end to avoid altering the collection indices
+                for (int i = GalleryGrid.Children.Count - 1; i >= 4; i--)
+                {
+                    GalleryGrid.Children.RemoveAt(i);
+                }
+            }
+        }
+
+
         private void SwitchOff_Clicked(object sender, EventArgs e)
         {
             ExitBorder.IsVisible = true;
@@ -86,10 +112,7 @@ namespace MauiApp3
 
         }
 
-        private void Settings_Clicked(object sender, EventArgs e)
-        {
-
-        }
+    
 
 
 
