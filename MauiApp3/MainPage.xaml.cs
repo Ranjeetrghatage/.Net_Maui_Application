@@ -75,11 +75,14 @@ namespace MauiApp3
         }
 
 
-        private void Settings_Clicked(object sender, EventArgs e)
+        private async void Settings_Clicked(object sender, EventArgs e)
         {
             ClearGridExceptFirstFour();
-
+            var button = (ImageButton)sender;
+            await button.RotateTo(360, 1000);
+            button.Rotation = 0;
         }
+
 
         public void ClearGridExceptFirstFour()
         {
